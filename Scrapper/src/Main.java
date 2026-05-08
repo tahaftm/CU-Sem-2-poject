@@ -10,23 +10,14 @@ public class Main {
 
         System.out.println("Scrapping has been done");
         try {
-
-            // Create FileWriter object
             FileWriter writer = new FileWriter("example.txt");
-
-            // Write text into file
             writer.write(doc.toString());
-
-            // Close the file
             writer.close();
 
             System.out.println("File written successfully.");
-
         } catch (IOException e) {
-
             System.out.println("An error occurred.");
             e.printStackTrace();
-
         }
     }
 }
