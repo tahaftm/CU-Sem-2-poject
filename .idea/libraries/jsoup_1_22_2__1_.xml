@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="jsoup-1.22.2 (1)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Scrapper/lib/jsoup-1.22.2 (1).jar!/" />
+      <root url="file://D:/javafx-sdk/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="file://D:/javafx-sdk/lib" />
+    </excluded>
+    <jarDirectory url="file://D:/javafx-sdk/lib" recursive="false" />
+  </library>
+</component>
