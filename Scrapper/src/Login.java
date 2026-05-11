@@ -72,6 +72,23 @@ public class Login extends Application {
             );
         });
 
+        forgotPassword.setOnAction(e -> {
+
+            Scene launcherScene = ForgotPassword.startScene(stage);
+            stage.setScene(launcherScene);
+
+            SetControl(
+                    message,
+                    "Data scraped successfully and File written successfully.",
+                    stage,
+                    login,
+                    cancel,
+                    forgotPassword,
+                    createAccount
+            );
+        });
+
+
         createAccount.setOnAction(e -> {
 
             Scene CreateAccountScene = CreateAccount.startScene(stage);
