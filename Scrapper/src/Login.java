@@ -32,8 +32,8 @@ public class Login extends Application {
 
 
         Label scrapper = new Label("Welcome to webscraper!");
-        scrapper.setTextFill(Color.color(0.4,0,0));
-        scrapper.setFont(Font.font("Arial", FontWeight.BOLD,34));
+        scrapper.setTextFill(Color.color(0.4, 0, 0));
+        scrapper.setFont(Font.font("Arial", FontWeight.BOLD, 34));
 //        stage.getIcons().add(new Image(getClass().getResourceAsStream("/download.jpg")));
 
 
@@ -54,6 +54,7 @@ public class Login extends Application {
         Label message=new Label();
         Button login = new Button("Login");
         Button cancel = new Button("Cancel");
+        Button createAccount = new Button("New here?");
         Button forgotPassword = new Button("Forgot Password?");
         login.setOnAction(e -> {
 
@@ -66,17 +67,37 @@ public class Login extends Application {
                     stage,
                     login,
                     cancel,
-                    forgotPassword
+                    forgotPassword,
+                    createAccount
             );
         });
-        cancel.setOnAction(e-> SetControl(message,"Program exited successfully",stage,login,cancel,forgotPassword));
+
+        createAccount.setOnAction(e -> {
+
+            Scene CreateAccountScene = CreateAccount.startScene(stage);
+            stage.setScene(CreateAccountScene);
+
+            SetControl(
+                    message,
+                    "Data scraped successfully and File written successfully.",
+                    stage,
+                    login,
+                    cancel,
+                    forgotPassword,
+                    createAccount
+            );
+        });
+
+        cancel.setOnAction(e-> SetControl(message,"Program exited successfully",stage,login,cancel,forgotPassword,createAccount));
         login.setFont(Font.font(14));
         cancel.setFont(Font.font(14));
         forgotPassword.setFont(Font.font(14));
+        createAccount.setFont(Font.font(14));
+
 
 
         HBox Buttonbox = new HBox();
-        Buttonbox.getChildren().addAll(login, cancel,forgotPassword);
+        Buttonbox.getChildren().addAll(login, cancel,forgotPassword,createAccount);
 
 
         layout.add(scrapper, 1,0);
@@ -99,13 +120,14 @@ public class Login extends Application {
         launch();
     }
 
-    public static void SetControl(Label label,String text,Stage stage,Button extract,Button cancel, Button forgot){
+    public static void SetControl(Label label,String text,Stage stage,Button extract,Button cancel, Button forgot, Button createAccount){
         label.setText(text);
         label.setFont(Font.font("Arial",FontWeight.BOLD,16));
 
         extract.setDisable(true);
         cancel.setDisable(true);
         forgot.setDisable(true);
+        createAccount.setDisable(true);
     }
 
 

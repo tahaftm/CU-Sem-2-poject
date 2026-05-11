@@ -6,50 +6,78 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import static javafx.application.Application.launch;
 
-public class CreateAccount extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
-    public void start(Stage stage) {
-//    public Scene getCreateAccountScreen(Stage stage){
+public class CreateAccount {
+    public static Scene startScene(Stage stage){
         GridPane layout = new GridPane();
         layout.setPadding(new Insets(30,10,30,30));
         layout.setHgap(10);
         layout.setVgap(10);
 
+        Label title  = new Label("Create new account!");
+        title.setTextFill(Color.color(0.4,0,0));
+        title.setFont(Font.font("Arial", FontWeight.BOLD,34));
+
+
         Label firstName = new Label("Enter your first name: ");
+        firstName.setTextFill(Color.color(0.4,0,0));
+        firstName.setFont(Font.font("Arial",FontWeight.BOLD,20));
+
         Label lastName = new Label("Enter your last name: ");
+        lastName.setTextFill(Color.color(0.4,0,0));
+        lastName.setFont(Font.font("Arial",FontWeight.BOLD,20));
+
         Label phone = new Label("Enter your Phone Number: ");
+        phone.setTextFill(Color.color(0.4,0,0));
+        phone.setFont(Font.font("Arial",FontWeight.BOLD,20));
+
         Label email = new Label("Enter your email: ");
+        email.setTextFill(Color.color(0.4,0,0));
+        email.setFont(Font.font("Arial",FontWeight.BOLD,20));
+
         Label password = new Label("Enter your Password: ");
+        password.setTextFill(Color.color(0.4,0,0));
+        password.setFont(Font.font("Arial",FontWeight.BOLD,20));
+
 
 
         TextField firstNameField = new TextField();
+        firstNameField.setFont(Font.font(14));
+
         TextField lastNameField = new TextField();
+        lastNameField.setFont(Font.font(14));
+
         TextField phoneNumberField = new TextField();
+        phoneNumberField.setFont(Font.font(14));
+
         TextField emailField = new TextField();
+        emailField.setFont(Font.font(14));
+
         PasswordField passwordField = new PasswordField();
+        passwordField.setFont(Font.font(14));
 
-
-        layout.add(firstName, 0,0);
-        layout.add(firstNameField, 1,0);
-        layout.add(lastName, 0,1);
-        layout.add(lastNameField, 1,1);
-        layout.add(phone, 0,2);
-        layout.add(phoneNumberField, 1,2);
-        layout.add(email, 0,3);
-        layout.add(emailField, 1,3);
-        layout.add(password, 0,4);
-        layout.add(passwordField, 1,4);
+        layout.add(title, 0, 0, 2, 1);
+        layout.add(firstName, 0,1);
+        layout.add(firstNameField, 1,1);
+        layout.add(lastName, 0,2);
+        layout.add(lastNameField, 1,2);
+        layout.add(phone, 0,3);
+        layout.add(phoneNumberField, 1,3);
+        layout.add(email, 0,4);
+        layout.add(emailField, 1,4);
+        layout.add(password, 0,5);
+        layout.add(passwordField, 1,5);
+        layout.setStyle("-fx-background-color: tan;");
 
         Button create = new Button("Create");
         Label message=new Label();
+        create.setFont(Font.font(14));
 
         create.setOnAction(e -> {
 
@@ -66,11 +94,7 @@ public class CreateAccount extends Application {
 
 
         layout.add(create,0,6);
-
-        Scene scene = new Scene(layout);
-        stage.setScene(scene);
-        stage.show();
-//        return new Scene(layout,300,600);
+        return new Scene(layout,600,500);
     }
     public static void SetControl(Label label,String text,Stage stage,Button create){
         label.setText(text);
