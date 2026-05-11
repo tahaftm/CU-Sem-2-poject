@@ -13,12 +13,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
 
-
-import static javafx.application.Application.launch;
-
 public class Launcher {
     public static Scene startScene(Stage stage) {
-
 
         GridPane layout = new GridPane();
         layout.setPadding(new Insets(30,10,30,30));
@@ -28,66 +24,54 @@ public class Launcher {
 
         Label scrapper = new Label("Scrapper");
         scrapper.setTextFill(Color.color(0.4,0,0));
-        scrapper.setFont(Font.font("Arial", FontWeight.BOLD,34));
+        scrapper.setFont(Font.font("Arial", FontWeight.BOLD,30));
 //        stage.getIcons().add(new Image(getClass().getResourceAsStream("/download.jpg")));
 
 
         Label WebUrl = new Label("Website Url:");
         WebUrl.setTextFill(Color.color(0.4,0,0));
-        WebUrl.setFont(Font.font("Arial",FontWeight.BOLD,20));
+        WebUrl.setFont(Font.font("Arial",FontWeight.BOLD,16));
         Label FileLoc = new Label("File location:");
         FileLoc.setTextFill(Color.color(0.4,0,0));
-        FileLoc.setFont(Font.font("Arial",FontWeight.BOLD,20));
+        FileLoc.setFont(Font.font("Arial",FontWeight.BOLD,16));
 
 
         TextField web=new TextField();
-        web.setFont(Font.font(14));
+        web.setFont(Font.font(12));
+        web.setMaxWidth(150);
         TextField file=new TextField();
-        file.setFont(Font.font(14));
+        file.setMaxWidth(150);
+        file.setFont(Font.font(12));
 
 
         Label message=new Label();
-        Button extract = new Button("Extract");
+        Button SelectType = new Button("Select Type");
         Button cancel = new Button("Cancel");
-        extract.setOnAction(e -> {
+        SelectType.setOnAction(e -> {
+            stage.setScene(Type.startScene(stage,web.getText(),file.getText()));
+        });
 
-            String link = web.getText();
-            String filepath = file.getText();
-
-            Scraper scraper = new Scraper(link, filepath);
-
-            scraper.start_scrape();
-
-            SetControl(
-                    message,
-                    "Data scraped successfully and File written successfully.",
-                    stage,
-                    extract,
-                    cancel
-            );
-        });        cancel.setOnAction(e-> SetControl(message,"Program exited successfully",stage,extract,cancel));
-        extract.setFont(Font.font(14));
-        cancel.setFont(Font.font(14));
+        cancel.setOnAction(e-> SetControl(message,"Program exited successfully",stage,SelectType,cancel));
+        SelectType.setFont(Font.font(12));
+        cancel.setFont(Font.font(12));
 
 
         HBox Buttonbox = new HBox();
-        Buttonbox.getChildren().addAll(extract, cancel);
+        Buttonbox.setSpacing(5);
+        Buttonbox.getChildren().addAll(SelectType, cancel);
 
 
         layout.add(scrapper, 1,0);
-        layout.add(WebUrl, 0, 1);
-        layout.add(FileLoc, 0, 2);
-        layout.add(Buttonbox, 1, 3);
-        layout.add(message,1,4);
+        layout.add(WebUrl, 1, 1);
+        layout.add(web,1,2);
+        layout.add(FileLoc, 1, 3);
+        layout.add(file,1,4);
+        layout.add(Buttonbox, 1, 5);
+        layout.add(message,1,6);
         layout.setStyle("-fx-background-color: tan;");
-        layout.add(web,1,1);
-        layout.add(file,1,2);
+        layout.setAlignment(Pos.CENTER);
 
-        return new Scene(layout,500,300);
-    }
-
-    public static void main(String[] args) {
-        launch();
+        return new Scene(layout,550,350);
     }
 
     public static void SetControl(Label label,String text,Stage stage,Button extract,Button cancel){
@@ -101,3 +85,4 @@ public class Launcher {
 
 
 }
+

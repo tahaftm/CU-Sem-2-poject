@@ -31,24 +31,25 @@ public class Login extends Application {
         layout.setVgap(10);
 
 
-        Label scrapper = new Label("Welcome to webscraper!");
+        Label scrapper = new Label("Welcome to WebScraper!");
+        scrapper.setAlignment(Pos.CENTER);
         scrapper.setTextFill(Color.color(0.4, 0, 0));
-        scrapper.setFont(Font.font("Arial", FontWeight.BOLD, 34));
+        scrapper.setFont(Font.font("Arial", FontWeight.BOLD, 26));
 //        stage.getIcons().add(new Image(getClass().getResourceAsStream("/download.jpg")));
 
 
         Label Email = new Label("Enter Email: ");
         Email.setTextFill(Color.color(0.4,0,0));
-        Email.setFont(Font.font("Arial",FontWeight.BOLD,20));
+        Email.setFont(Font.font("Arial",FontWeight.BOLD,16));
         Label passwordLabel = new Label("Enter Password: ");
         passwordLabel.setTextFill(Color.color(0.4,0,0));
-        passwordLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        passwordLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
 
         TextField web=new TextField();
-        web.setFont(Font.font(14));
+        web.setFont(Font.font(12));
         PasswordField file=new PasswordField();
-        file.setFont(Font.font(14));
+        file.setFont(Font.font(12));
 
 
         Label message=new Label();
@@ -106,29 +107,31 @@ public class Login extends Application {
         });
 
         cancel.setOnAction(e-> SetControl(message,"Program exited successfully",stage,login,cancel,forgotPassword,createAccount));
-        login.setFont(Font.font(14));
-        cancel.setFont(Font.font(14));
-        forgotPassword.setFont(Font.font(14));
-        createAccount.setFont(Font.font(14));
+        login.setFont(Font.font(12));
+        cancel.setFont(Font.font(12));
+        forgotPassword.setFont(Font.font(12));
+        createAccount.setFont(Font.font(12));
 
 
 
         HBox Buttonbox = new HBox();
+        Buttonbox.setSpacing(5);
         Buttonbox.getChildren().addAll(login, cancel,forgotPassword,createAccount);
 
 
-        layout.add(scrapper, 1,0);
+        layout.add(scrapper, 0,0);
         layout.add(Email, 0, 1);
-        layout.add(passwordLabel, 0, 2);
+        layout.add(web,0,2);
+        layout.add(passwordLabel, 0, 3);
+        layout.add(file,0,4);
 //        layout.add(FileLoc, 0, 2);
-        layout.add(Buttonbox, 1, 3);
-        layout.add(message,1,4);
+        layout.add(Buttonbox, 0, 5);
+        layout.add(message,0,6);
         layout.setStyle("-fx-background-color: tan;");
-        layout.add(web,1,1);
-        layout.add(file,1,2);
+        layout.setAlignment(Pos.CENTER);
 
 
-        Scene scene1 = new Scene(layout, 800, 400);
+        Scene scene1 = new Scene(layout, 550, 350);
         stage.setScene(scene1);
         stage.show();
     }
@@ -146,7 +149,4 @@ public class Login extends Application {
         forgot.setDisable(true);
         createAccount.setDisable(true);
     }
-
-
-
 }
