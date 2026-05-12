@@ -39,7 +39,7 @@ public class Scraper {
     }
     private void saveToFile(String data, String type) {
         try (FileWriter writer = new FileWriter(filePath + "\\" + type + ".txt", true)) {
-            System.out.println("Writing file in progress");
+            System.out.println("Writin g file in progress");
             writer.write(data);
             writer.write("\n");
             System.out.println("Writing file completed");
